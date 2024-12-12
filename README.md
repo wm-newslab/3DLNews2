@@ -1,6 +1,6 @@
 # 3DLNews-2.0: A Three-decade Dataset of US Local News Articles
 
-## 1. About 
+## 1. Overview 
 We present 3DLNews-2.0, an expanded version of the 3DLNews repository, featuring significant enhancements and broader coverage. Key highlights include:
 - A collection of U.S. local news articles spanning nearly three decades, from 1995 to 2024.
 - Over 8 million URLs (including HTML text), with a refined subset of more than 4 million filtered news article URLs.
@@ -26,15 +26,15 @@ To cite, kindly use:
 }
 ```
 
-### 2. Download the [Dataset](https://app.globus.org/file-manager?origin_id=20d443fd-a8c6-40e0-a6cb-562e1feb644d&origin_path=%2F)
+### 2. Accessing the Dataset
 
-The dataset is publicly available and can be accessed through following links. Please note that you may need to create a Globus account to access the dataset.
-- [3DLNews-2.0](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F): The dataset without HTML files for the articles. HTML file path is mentioned in the the preprocessed article data object, which is explained in the "Data Enrichment" section.
-- [3DLNews-2.0-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F): HTML files for the articles
+The dataset is publicly available for download via the following links. Please note that a Globus account is required to access the dataset.
+- [3DLNews-2.0](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F): Contains the dataset excluding the HTML files for the articles. The paths to the HTML files are included in the preprocessed article data objects, which is detailed in the "Data Enrichment" section.
+- [3DLNews-2.0-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F): Includes the HTML files for the articles.
 
 #### !!! Important Note
-- The dataset size is approximately 61.18 GB in its uncompressed format.
-- A compressed version is also available as a zip file, reducing the size to 58.78GB.
+- The [3DLNews-2.0](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F) dataset (without HTML) is approximately 2.8 GB.
+- The [3DLNews-2.0-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F) (Only HTML files) dataset is approximately 247 GB.
   
 Make sure to verify that you have sufficient storage and bandwidth before downloading.
 
@@ -55,7 +55,7 @@ The  improved local news media outlets dataset can be downloaded from here: [usa
 | TV         | 886                 |
 | **Total**  | **14,086**          |
 
-We issued Google and Twitter search queries to their respective search engines and scraped their links. For Google, we created queries from 1996 – 2024, for Twitter, 2006 – 2024. Table 2
+We issued Google and Twitter search queries to their respective search engines and scraped their links. For Google, we created queries from 1995 – 2024, for Twitter, 2006 – 2024. Table 2
 presents the number of links scraped from Google and Twitter for each media type.
 
 **Table 2: 3DLNews-raw: Number of URLs (non-news URLs included)**
@@ -80,32 +80,52 @@ presents the number of links scraped from Google and Twitter for each media type
 
 ### 3.2 Data Filtering
 
-We removed non-news article links by applying a filtering process outlined below. 
+The collected URLs from Google and Twitter scraping could include both news and non-news article links. Below, we outline our filtering process for removing non-news article URLs from 3DLNews. Since there is no universal standard URL format for news articles, we have also provided access to the raw data, allowing researchers to implement their own filtering methods. Our process was informed by an experiment in which we developed a gold-standard dataset of news article URLs to understand two key properties: **path depth** and **word-boundary**.
 
-- **Step 1:** Dereferenced all URLs to resolve redirects and retrieved final URLs that returned HTTP 200 response codes.
+- **Path Depth**: The path depth of a URL refers to the number of hierarchies in its path property. For example:
+  - `https://example.com/` has a path depth of 0.
+  - `https://example.com/foo` has a path depth of 1.
+  - `https://example.com/foo/bar` has a path depth of 2.
+  
+- **Word-Boundary**: A word-boundary is a symbol that separates words in a URL. For example:
+  - In the URL `https://example.com/this-is-a-page`, the word-boundary is `-`.
 
-- **Step 2:** Removed links with domains not present in our local news media dataset.
+### Filtering Process
 
-- **Step 3:** Third, we converted all URLs to lowercase, discarded trailing slashes, and removed duplicate URLs.
+The filtering process consisted of the following steps:
 
-- **Step 4:** As URLs with a path depth of zero, typically representing homepages, URLs with a path depth of zero were removed.
+1. **Dereferencing URLs**: 
+   - All URLs were dereferenced to resolve redirects and retrieve their final forms.
 
-- **Step 5:** As we observed that news URLs occurred at lower path depths (e.g.,< 3), we kept such news article URLs only if they included popular word-boundary separators such as ‘-’, ‘_’, or ‘.’ We kept all URLs with path depth ≥ 3. 
+2. **Domain Matching**:
+   - Links with domains not present in our local news media dataset were discarded.
 
+3. **Normalization**:
+   - URLs were converted to lowercase, trailing slashes were removed, and duplicates were eliminated.
 
-Table 3 presents the number of news articles after filtering.
+4. **Path Depth Filtering**:
+   - URLs with a path depth of 0 (typically homepages) were removed.
+   - All URLs with a path depth of 3 or greater were retained.
+
+5. **Word-Boundary Filtering**:
+   - URLs with a path depth of less than 3 were retained if they contained popular word-boundary separators such as `-`, `_`, or `.`.
+   - For example: `http://kwgs.org/post/funeral-set-ou-quarterback-killed-crash`.
 
 **Table 3: 3DLNews: Number of news article URLs (non-news URLs excluded)**
 
-| Type        | Google    | Twitter   | Total     |
-|-------------|-----------|-----------|-----------|
-| Newspapers  | 502,530   | 64,886    | 618,686   |
-| Radio       | 52,925    | 555       | 64,658    |
-| TV          | 62,727    | 22,675    | 105,008   |
-| Broadcast   | 110,494   | 7,783     | 130,144   |
-| **Total**   | **728,676** | **95,899** | **824,575** |
+Here is the updated table in Markdown format, showing only the "Filtered" columns:
 
-All the extracted article URLs can be found here: [Local_News_Article_Links.txt.gz](https://github.com/wm-newslab/3DLNews/blob/main/resources/Local_News_Article_Links.txt.gz)
+```markdown
+| **Media Type**    | **Google** | **Twitter** | **Total** |
+|--------------------|---------------------|-----------------------|--------------------|
+| Newspapers         | 2,367,322          | 179,152              | 2,509,857         |
+| Radio              | 202,668            | 8,986                | 211,654           |
+| TV                 | 523,613            | 13,981               | 537,594           |
+| Broadcast          | 470,223            | 16,525               | 486,748           |
+| **Total**          | **3,563,826**      | **218,644**          | **3,782,470**     |
+``` 
+
+This table contains only the filtered data columns.
 
 ### 3.3 Data Enrichment 
 
@@ -183,7 +203,6 @@ Within both the Twitter and Google directories, there are three main directories
 
 - **state:** Contains scraped data for each state for each year.
 - **preprocessed_data:** Contains directories for each state. Within each state directory, there are jsonl.gz files for each year, which include data objects for each URL with metadata.
-- **HTML:** Contains the HTML content for each article for each state for each year, named with the hash value of each article URL.
 
   
 ### 4. Potential Applications of 3DLNews Dataset
