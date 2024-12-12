@@ -80,17 +80,36 @@ presents the number of links scraped from Google and Twitter for each media type
 
 ### 3.2 Data Filtering
 
-We removed non-news article links by applying a filtering process outlined below. 
+The collected URLs from Google and Twitter scraping could include both news and non-news article links. Below, we outline our filtering process for removing non-news article URLs from 3DLNews. Since there is no universal standard URL format for news articles, we have also provided access to the raw data, allowing researchers to implement their own filtering methods. Our process was informed by an experiment in which we developed a gold-standard dataset of news article URLs to understand two key properties: **path depth** and **word-boundary**.
 
-- **Step 1:** Dereferenced all URLs to resolve redirects and retrieved final URLs that returned HTTP 200 response codes.
+- **Path Depth**: The path depth of a URL refers to the number of hierarchies in its path property. For example:
+  - `https://example.com/` has a path depth of 0.
+  - `https://example.com/foo` has a path depth of 1.
+  - `https://example.com/foo/bar` has a path depth of 2.
+  
+- **Word-Boundary**: A word-boundary is a symbol that separates words in a URL. For example:
+  - In the URL `https://example.com/this-is-a-page`, the word-boundary is `-`.
 
-- **Step 2:** Removed links with domains not present in our local news media dataset.
+### Filtering Process
 
-- **Step 3:** Third, we converted all URLs to lowercase, discarded trailing slashes, and removed duplicate URLs.
+The filtering process consisted of the following steps:
 
-- **Step 4:** As URLs with a path depth of zero, typically representing homepages, URLs with a path depth of zero were removed.
+1. **Dereferencing URLs**: 
+   - All URLs were dereferenced to resolve redirects and retrieve their final forms.
 
-- **Step 5:** As we observed that news URLs occurred at lower path depths (e.g.,< 3), we kept such news article URLs only if they included popular word-boundary separators such as ‘-’, ‘_’, or ‘.’ We kept all URLs with path depth ≥ 3. 
+2. **Domain Matching**:
+   - Links with domains not present in our local news media dataset were discarded.
+
+3. **Normalization**:
+   - URLs were converted to lowercase, trailing slashes were removed, and duplicates were eliminated.
+
+4. **Path Depth Filtering**:
+   - URLs with a path depth of 0 (typically homepages) were removed.
+   - All URLs with a path depth of 3 or greater were retained.
+
+5. **Word-Boundary Filtering**:
+   - URLs with a path depth of less than 3 were retained if they contained popular word-boundary separators such as `-`, `_`, or `.`.
+   - For example: `http://kwgs.org/post/funeral-set-ou-quarterback-killed-crash`.
 
 
 Table 3 presents the number of news articles after filtering.
@@ -104,8 +123,6 @@ Table 3 presents the number of news articles after filtering.
 | TV          | 62,727    | 22,675    | 105,008   |
 | Broadcast   | 110,494   | 7,783     | 130,144   |
 | **Total**   | **728,676** | **95,899** | **824,575** |
-
-All the extracted article URLs can be found here: [Local_News_Article_Links.txt.gz](https://github.com/wm-newslab/3DLNews/blob/main/resources/Local_News_Article_Links.txt.gz)
 
 ### 3.3 Data Enrichment 
 
