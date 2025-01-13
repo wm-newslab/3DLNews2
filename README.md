@@ -1,7 +1,7 @@
 # 3DLNews-2.0: A Three-decade Dataset of US Local News Articles
 
 ## 1. Overview 
-We present 3DLNews-2.0, an expanded version of the 3DLNews repository, featuring significant enhancements and broader coverage. Key highlights include:
+We present 3DLNews-2.0, an expanded version of the [3DLNews](https://github.com/wm-newslab/3DLNews) repository, featuring significant enhancements and broader coverage. Key highlights include:
 - A collection of U.S. local news articles spanning nearly three decades, from 1995 to 2024.
 - Over 8 million URLs (including HTML text), with a refined subset of more than 4 million filtered news article URLs.
 - Coverage of article URLs from over 14,000 local newspapers, TV stations, and radio broadcasters across all 50 states, offering a comprehensive view of the U.S. local news landscape.
@@ -38,7 +38,7 @@ The dataset is publicly available for download via the following links. Please n
   
 Make sure to verify that you have sufficient storage and bandwidth before downloading.
 
-## 3. 3DLNews Dataset
+## 3. 3DLNews-2.0 Dataset
 
 ### 3.1 Local news media dataset
 We used an extended version of the Local Memory Project's (LMP) US local news dataset to get the local news media outlets. LMP's dataset consists of the websites of 5,993 local newspapers, 2,539 TV stations, and 1,061 radio stations, primarily extracted from [thepaperboy.com](thepaperboy.com) in 2016. We extended it by crawling and scraping [thepaperboy.com](thepaperboy.com) (again), [web.archive.org/web/20221203031956/http://www.usnpl.com/](web.archive.org/web/20221203031956/http://www.usnpl.com/), [50states.com](50states.com), and [einpresswire.com/world-media-directory/3/united-states](einpresswire.com/world-media-directory/3/united-states). Table 1 outline the number of local news media outlets that we have used to extract local news articles. The `broadcast` type refers to either TV or radio stations, because we could not accurately distinguish them during scraping.
