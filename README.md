@@ -26,6 +26,10 @@ To cite, kindly use:
 }
 ```
 
+![\label{fig:3dln-v2}](img/3DLNews-V2.jpg)
+
+Fig 1. Article Distribution Across US Counties in the 3DLNews-2.0 Dataset.
+
 ### 2. Accessing the Dataset
 
 The dataset is publicly available for download via the following links. Please note that a Globus account is required to access the dataset.
@@ -55,28 +59,7 @@ The  improved local news media outlets dataset can be downloaded from here: [usa
 | TV         | 886                 |
 | **Total**  | **14,086**          |
 
-We issued Google and Twitter search queries to their respective search engines and scraped their links. For Google, we created queries from 1996 – 2024, for Twitter, 2006 – 2024. Table 2
-presents the number of links scraped from Google and Twitter for each media type.
-
-**Table 2: 3DLNews-raw: Number of URLs (non-news URLs included)**
-
-| Type        | Google        | Twitter       | Total         |
-|-------------|---------------|---------------|---------------|
-| Newspapers  | 853,543       | 199,996       | 1,053,539     |
-| Radio       | 140,401       | 102,494       | 242,895       |
-| TV          | 99,001        | 66,880        | 165,881       |
-| Broadcast   | 164,028       | 100,119       | 264,147       |
-| **Total**   | **1,256,973** | **469,489**   | **1,726,462** |
-
-**Table 3: Number of URLs with 200 response code (non-news URLs included)**
-
-| Type        | Google        | Twitter       | Total         |
-|-------------|---------------|---------------|---------------|
-| Newspapers  | 636,967       | 155,083       | 792,050     |
-| Radio       | 113,383       | 41,917        | 155,300       |
-| TV          | 88,620        | 54,632        | 143,252      |
-| Broadcast   | 155,445       | 44,909       | 200,354      |
-| **Total**   | **994,415** | **296,541**   | **1,290,956** |
+We issued Google and Twitter search queries to their respective search engines and scraped their links. For Google, we created queries from 1996 – 2024, for Twitter, 2006 – 2024. 
 
 ### 3.2 Data Filtering
 
@@ -114,15 +97,16 @@ The filtering process consisted of the following steps:
 
 Table 3 presents the number of news articles after filtering.
 
-**Table 3: 3DLNews: Number of news article URLs (non-news URLs excluded)**
+**Table 3: 3DLNews: Number of news article URLs**
 
-| Type        | Google    | Twitter   | Total     |
-|-------------|-----------|-----------|-----------|
-| Newspapers  | 502,530   | 64,886    | 618,686   |
-| Radio       | 52,925    | 555       | 64,658    |
-| TV          | 62,727    | 22,675    | 105,008   |
-| Broadcast   | 110,494   | 7,783     | 130,144   |
-| **Total**   | **728,676** | **95,899** | **824,575** |
+| **Media Type**    | **Google Collected** | **Google Filtered** | **Twitter Collected** | **Twitter Filtered** | **Total Collected** | **Total Filtered** |
+|--------------------|-----------------------|-----------------------|------------------------|-----------------------|---------------------|--------------------|
+| Newspapers         | 4,992,262            | 2,367,322            | 625,166               | 179,152              | 5,617,428          | 2,509,857         |
+| Radio              | 1,069,333            | 202,668              | 119,202               | 8,986                | 1,188,535          | 211,654           |
+| TV                 | 888,243              | 523,613              | 63,656                | 13,981               | 951,899            | 537,594           |
+| Broadcast          | 837,599              | 470,223              | 74,350                | 16,525               | 911,949            | 486,748           |
+| **Total**          | **7,787,437**        | **3,563,826**        | **882,374**           | **218,644**          | **8,669,811**      | **3,782,470**     |
+
 
 ### 3.3 Data Enrichment 
 
