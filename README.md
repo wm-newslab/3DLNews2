@@ -198,7 +198,7 @@ The Google directory contains JSONL files with news article URLs extracted throu
 
 The Twitter directory holds JSONL files with news article URLs obtained via Twitter scraping. Each JSONL file includes URLs and metadata collected from tweets, providing a diverse set of news articles shared on the Twitter platform.
 
-Within both the Twitter and Google directories, there are three main directories for each news media type. Inside each media type folder, the following main directories are included:
+For Twitter and Google directories, there are three main directories for each news media type. Inside each media type folder, the following main directories are included:
 
 - **state:** Contains scraped data for each state for each year.
 - **preprocessed_data:** Contains directories for each state. Within each state directory, there are jsonl.gz files for each year, which include data objects for each URL with metadata.
