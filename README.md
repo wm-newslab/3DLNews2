@@ -133,6 +133,8 @@ We enhanced the usefulness of the news article URLs in 3DLNews by adding attribu
 ### 3.4 Data Format
 
 - The structure of the dataset is as follows.
+  - [3DLNews-2.0](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F)
+  
   ```
   ├── Google
   │   ├── 1-Newspapers
@@ -155,7 +157,22 @@ We enhanced the usefulness of the news article URLs in 3DLNews by adding attribu
   │   │   │   └── WY
   │   |   │       ├── preprocessed_google_newspaper_AK_2006.jsonl.gz
   │   |   │       ├── preprocessed_google_newspaper_AK_2007.jsonl.gz
-  │   |   │       ├── -------------------------------
+  │   |   │       ├── ------------------------------- 
+  │   ├── 2-Radio
+  │   ├── 3-TV
+  │   └── 4-Broadcast
+  └── Twitter
+      ├── 1-Newspapers
+      ├── 2-Radio
+      ├── 3-TV
+      └── 4-Broadcast
+  ```
+
+  - [3DLNews-2.0-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F)
+
+  ```
+  ├── Google
+  │   ├── 1-Newspapers
   │   │   ├── HTML
   │   │   │   ├── AK
   │   │   │   │   ├── 1996
@@ -176,6 +193,7 @@ We enhanced the usefulness of the news article URLs in 3DLNews by adding attribu
       ├── 3-TV
       └── 4-Broadcast
   ```
+    
 The Google directory contains JSONL files with news article URLs extracted through Google scraping. Each JSONL file represents a collection of URLs and their associated metadata gathered from automated searches on Google.
 
 The Twitter directory holds JSONL files with news article URLs obtained via Twitter scraping. Each JSONL file includes URLs and metadata collected from tweets, providing a diverse set of news articles shared on the Twitter platform.
