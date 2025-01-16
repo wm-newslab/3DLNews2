@@ -95,9 +95,9 @@ The filtering process consisted of the following steps:
    - For example: `http://kwgs.org/post/funeral-set-ou-quarterback-killed-crash`.
 
 
-Table 3 presents the number of news articles after filtering.
+Table 2 presents the number of links collected from Google and Twitter scrapping for all four media types and number of news articles after filtering.
 
-**Table 3: 3DLNews: Number of news article URLs**
+**Table 2: 3DLNews: Number of news article URLs**
 
 | **Media Type**    | **Google Collected** | **Google Filtered** | **Twitter Collected** | **Twitter Filtered** | **Total Collected** | **Total Filtered** |
 |--------------------|-----------------------|-----------------------|------------------------|-----------------------|---------------------|--------------------|
@@ -110,9 +110,9 @@ Table 3 presents the number of news articles after filtering.
 
 ### 3.3 Data Enrichment 
 
-We enhanced the usefulness of the news article URLs in 3DLNews by adding attributes to each URL. Table 4 outlines the complete list of attributes. 
+We enhanced the usefulness of the news article URLs in 3DLNews by adding attributes to each URL. Table 3 outlines the complete list of attributes. 
 
-**Table 4: Properties of news article URLs in 3DLNews**
+**Table 3: Properties of news article URLs in 3DLNews**
 
 | Property          | Description | Example   |
 |-------------------|------------------------|-------------------------|
