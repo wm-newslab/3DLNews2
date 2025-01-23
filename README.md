@@ -148,7 +148,7 @@ We enhanced the usefulness of the news article URLs in 3DLNews by adding attribu
   │   |   │       ├── google_newspaper_AK_2006.jsonl.gz
   │   |   │       ├── google_newspaper_AK_2007.jsonl.gz
   │   |   │       ├── -------------------------------
-  │   │   ├── preprocessed_stat
+  │   │   ├── preprocessed_state
   │   │   │   ├── AK
   │   |   │   |   ├── preprocessed_google_newspaper_AK_2006.jsonl.gz
   │   |   │   |   ├── preprocessed_google_newspaper_AK_2007.jsonl.gz
