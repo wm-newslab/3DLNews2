@@ -4,7 +4,7 @@ import json
 from tqdm import tqdm
 
 preprocessed_dir = "preprocessed_state"  # Path where preprocessed data is stored
-updated_preprocessed_dir = "filterd_data"  # Path to save files with updated is_news_article
+updated_preprocessed_dir = "filterd_data"  # Path to save filtered news article data
 
 def create_directory(directory_path):
     """Create a directory if it doesn't exist."""
