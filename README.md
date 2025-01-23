@@ -204,8 +204,13 @@ For Twitter and Google directories, there are three main directories for each ne
 - **preprocessed_data:** Contains directories for each state. Within each state directory, there are jsonl.gz files for each year, which include data objects for each URL with metadata.
 - **HTML:** Contains the HTML content for each article for each state for each year, named with the hash value of each article URL.
 
+### 4. Filter News Articles
+   
+To extract news articles filtered using the specified approach outlined above, you can use the following provided script. 
+
+- [Filter_news_articles.py](src/Preprocess/Filter_news_articles.py)
   
-### 4. Potential Applications of 3DLNews Dataset
+### 5. Potential Applications of 3DLNews Dataset
 - Exploring the Nationalization of Local News
 - Media Bias Analysis
 - Studying US Local News Deserts
