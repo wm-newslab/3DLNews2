@@ -28,7 +28,7 @@ To cite, kindly use:
 
 ![\label{fig:3dln-v2}](img/3DLNews-V2.png)
 
-Fig 1. Article Distribution Across US Counties in the 3DLNews-2.0 Dataset.
+Fig 1. Article Distribution Across US Counties in the version 1 and 2 of 3DLNews Dataset.
 
 ### 2. Accessing the Dataset
 
