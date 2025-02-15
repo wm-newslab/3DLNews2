@@ -1,13 +1,12 @@
-# 3DLNews-2.0: A Three-decade Dataset of US Local News Articles
+# 3DLNews2: A Three-decade Dataset of US Local News Articles
 
 ## 1. Overview 
-We present 3DLNews-2.0, an expanded version of the [3DLNews](https://github.com/wm-newslab/3DLNews) repository, featuring significant enhancements and broader coverage. Key highlights include:
-- A collection of U.S. local news articles spanning nearly three decades, from 1995 to 2024.
+We present 3DLNews2, an expanded version of the [3DLNews](https://github.com/wm-newslab/3DLNews), featuring significant enhancements and broader coverage:
+- A collection of US local news articles spanning nearly three decades, from 1995 to 2024.
 - Over 8 million URLs (including HTML text), with a refined subset of more than 4 million filtered news article URLs.
-- Coverage of article URLs from over 14,000 local newspapers, TV stations, and radio broadcasters across all 50 states, offering a comprehensive view of the U.S. local news landscape.
-- Data gathered through an extended scraping process using Google and Twitter search results, building on the original 3DLNews scraping methodology.
+- Coverage of article URLs from over 14,000 local newspapers, TV stations, and radio broadcasters across all 50 states, offering a comprehensive view of the US local news landscape.
+- Data gathered through an extended three-month long scraping of Google and Twitter search results, building on the original 3DLNews scraping methodology.
 - A rigorous multi-step filtering pipeline was employed to exclude non-news links and enhance the dataset with rich metadata, such as: names and geographic coordinates of the source media organizations, article publication dates and other relevant metadata.
-- Demonstrated applications of the 3DLNews-2.0 dataset across four use cases, showcasing its versatility.
   
 To cite, kindly use:
 
@@ -28,24 +27,24 @@ To cite, kindly use:
 
 ![\label{fig:3dln-v2}](img/3DLNews-V2.png)
 
-Fig 1. Article Distribution Across US Counties in the version 1 and 2 of 3DLNews Dataset.
+Fig 1. Article Distribution Across US Counties in 3DLNews version 1 (left) vs. 2 (right).
 
 ### 2. Accessing the Dataset
 
-The dataset is publicly available for download via the following links. Please note that a Globus account is required to access the dataset.
-- [3DLNews-2.0](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F): Contains the dataset excluding the HTML files for the articles. The paths to the HTML files are included in the preprocessed article data objects, which is detailed in the "Data Enrichment" section.
-- [3DLNews-2.0-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F): Includes the HTML files for the articles.
+The dataset is publicly available for download via the following links. Please note that a Globus account is required to access the dataset. A Globus account can be easily created your Google or ORCID iD accounts.
+- [3DLNews2](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F): Contains the dataset **excluding** the HTML files of articles. The paths to the HTML files are included in the preprocessed article data objects, which is detailed in the "[Data Enrichment](#33-data-enrichment)" section.
+- [3DLNews2-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F): Includes the HTML files of the articles.
 
 #### !!! Important Note
-- The [3DLNews-2.0](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F) dataset (without HTML) is approximately 2.8 GB.
-- The [3DLNews-2.0-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F) (Only HTML files) dataset is approximately 247 GB.
+- The [3DLNews2](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F) dataset (without HTML) is approximately 2.8 GB.
+- The [3DLNews2-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F) (Only HTML files) dataset is approximately 247 GB.
   
-Make sure to verify that you have sufficient storage and bandwidth before downloading.
+Ensure that you have sufficient storage and bandwidth before downloading.
 
-## 3. 3DLNews-2.0 Dataset
+## 3. 3DLNews2 Dataset
 
 ### 3.1 Local news media dataset
-We used an extended version of the Local Memory Project's (LMP) US local news dataset to get the local news media outlets. LMP's dataset consists of the websites of 5,993 local newspapers, 2,539 TV stations, and 1,061 radio stations, primarily extracted from [thepaperboy.com](thepaperboy.com) in 2016. We extended it by crawling and scraping [thepaperboy.com](thepaperboy.com) (again), [web.archive.org/web/20221203031956/http://www.usnpl.com/](web.archive.org/web/20221203031956/http://www.usnpl.com/), [50states.com](50states.com), and [einpresswire.com/world-media-directory/3/united-states](einpresswire.com/world-media-directory/3/united-states). Table 1 outline the number of local news media outlets that we have used to extract local news articles. The `broadcast` type refers to either TV or radio stations, because we could not accurately distinguish them during scraping.
+We used an extended version of the [Local Memory Project](https://newsresearch.lab.wm.edu/tools/local-memory)'s (LMP) US local news dataset to get the local news media outlets. LMP's dataset consists of the websites of 5,993 local newspapers, 2,539 TV stations, and 1,061 radio stations, primarily extracted from [thepaperboy.com](thepaperboy.com) in 2016. We extended it by crawling and scraping [thepaperboy.com](thepaperboy.com) (again), [web.archive.org/web/20221203031956/http://www.usnpl.com/](web.archive.org/web/20221203031956/http://www.usnpl.com/), [50states.com](50states.com), and [einpresswire.com/world-media-directory/3/united-states](einpresswire.com/world-media-directory/3/united-states). Table 1 outline the number of local news media outlets that we have used to extract local news articles. The `broadcast` type refers to either TV or radio stations, because we could not accurately distinguish them during scraping.
 
 The  improved local news media outlets dataset can be downloaded from here: [usa_2016_2024_pu5e.json.gz](https://github.com/wm-newslab/3DLNews/blob/main/resources/usa_2016_2024_pu5e.json.gz)
 
@@ -78,7 +77,7 @@ The collected URLs from Google and Twitter scraping could include both news and 
 The filtering process consisted of the following steps:
 
 1. **Dereferencing URLs**: 
-   - All URLs were dereferenced to resolve redirects and retrieve their final forms.
+   - All URLs were dereferenced to resolve redirects and retrieve their final representations.
 
 2. **Domain Matching**:
    - Links with domains not present in our local news media dataset were discarded.
@@ -134,70 +133,70 @@ We enhanced the usefulness of the news article URLs in 3DLNews by adding attribu
 ### 3.4 Data Format
 
 - The structure of the dataset is as follows.
-  - [3DLNews-2.0](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F)
+  - [3DLNews2](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F)
   
   ```
   ├── Google
-  │   ├── 1-Newspapers
-  │   │   ├── state
-  │   │   │   ├── AK
-  │   |   │   |   ├── google_newspaper_AK_2006.jsonl.gz
-  │   |   │   |   ├── google_newspaper_AK_2007.jsonl.gz
-  │   |   │   |   ├── -------------------------------
-  │   │   │   ├── --
-  │   │   │   └── WY
-  │   |   │       ├── google_newspaper_AK_2006.jsonl.gz
-  │   |   │       ├── google_newspaper_AK_2007.jsonl.gz
-  │   |   │       ├── -------------------------------
-  │   │   ├── preprocessed_state
-  │   │   │   ├── AK
-  │   |   │   |   ├── preprocessed_google_newspaper_AK_2006.jsonl.gz
-  │   |   │   |   ├── preprocessed_google_newspaper_AK_2007.jsonl.gz
-  │   |   │   |   ├── -------------------------------
-  │   │   │   ├── --
-  │   │   │   └── WY
-  │   |   │       ├── preprocessed_google_newspaper_AK_2006.jsonl.gz
-  │   |   │       ├── preprocessed_google_newspaper_AK_2007.jsonl.gz
-  │   |   │       ├── ------------------------------- 
-  │   ├── 2-Radio
-  │   ├── 3-TV
-  │   └── 4-Broadcast
+  │ ├── 1-Newspapers
+  │ │ ├── state
+  │ │ │ ├── AK
+  │ |   │ |   ├── google_newspaper_AK_2006.jsonl.gz
+  │ |   │ |   ├── google_newspaper_AK_2007.jsonl.gz
+  │ |   │ |   ├── -------------------------------
+  │ │ │ ├── --
+  │ │ │ └── WY
+  │ |   │     ├── google_newspaper_AK_2006.jsonl.gz
+  │ |   │     ├── google_newspaper_AK_2007.jsonl.gz
+  │ |   │     ├── -------------------------------
+  │ │ ├── preprocessed_state
+  │ │ │ ├── AK
+  │ |   │ |   ├── preprocessed_google_newspaper_AK_2006.jsonl.gz
+  │ |   │ |   ├── preprocessed_google_newspaper_AK_2007.jsonl.gz
+  │ |   │ |   ├── -------------------------------
+  │ │ │ ├── --
+  │ │ │ └── WY
+  │ |   │     ├── preprocessed_google_newspaper_AK_2006.jsonl.gz
+  │ |   │     ├── preprocessed_google_newspaper_AK_2007.jsonl.gz
+  │ |   │     ├── ------------------------------- 
+  │ ├── 2-Radio
+  │ ├── 3-TV
+  │ └── 4-Broadcast
   └── Twitter
-      ├── 1-Newspapers
-      ├── 2-Radio
-      ├── 3-TV
-      └── 4-Broadcast
+    ├── 1-Newspapers
+    ├── 2-Radio
+     ├── 3-TV
+    └── 4-Broadcast
   ```
 
-  - [3DLNews-2.0-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F)
+  - [3DLNews2-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F)
 
   ```
   ├── Google
-  │   ├── 1-Newspapers
-  │   │   ├── HTML
-  │   │   │   ├── AK
-  │   │   │   │   ├── 1996
-  │   │   │   │   │   ├── 0106eb41fcb93351d3bba81a67ecf487.html.gz
-  │   │   │   │   │   ├── 024b602f2a0c7edf53ee2a1b0228bfc5.html.gz
-  │   │   │   │   │   ├── -------------------------------------  
-  │   │   │   │   ├── ----
-  │   │   │   │   └──2024
-  │   │   │   │       ├── 0106eb41fcb93351d3bba81a67ecf487.html.gz
-  │   │   │   │       ├── 024b602f2a0c7edf53ee2a1b0228bfc5.html.gz
-  │   │   │   │       ├── -------------------------------------  
-  │   ├── 2-Radio
-  │   ├── 3-TV
-  │   └── 4-Broadcast
+  │ ├── 1-Newspapers
+  │ │ ├── HTML
+  │ │ │ ├── AK
+  │ │ │ │ ├── 1996
+  │ │ │ │ │ ├── 0106eb41fcb93351d3bba81a67ecf487.html.gz
+  │ │ │ │ │ ├── 024b602f2a0c7edf53ee2a1b0228bfc5.html.gz
+  │ │ │ │ │ ├── -------------------------------------  
+  │ │ │ │ ├── ----
+  │ │ │ │ └──2024
+  │ │ │ │   ├── 0106eb41fcb93351d3bba81a67ecf487.html.gz
+  │ │ │ │   ├── 024b602f2a0c7edf53ee2a1b0228bfc5.html.gz
+  │ │ │ │   ├── -------------------------------------  
+  │ ├── 2-Radio
+  │ ├── 3-TV
+  │ └── 4-Broadcast
   └── Twitter
-      ├── 1-Newspapers
-      ├── 2-Radio
-      ├── 3-TV
-      └── 4-Broadcast
+    ├── 1-Newspapers
+    ├── 2-Radio
+     ├── 3-TV
+    └── 4-Broadcast
   ```
     
-The Google directory contains JSONL files with news article URLs extracted through Google scraping. Each JSONL file represents a collection of URLs and their associated metadata gathered from automated searches on Google.
+The Google directory contains JSONL files with news article URLs extracted through scraping Google. Each JSONL file represents a collection of URLs and their associated metadata gathered from automated searches on Google.
 
-The Twitter directory holds JSONL files with news article URLs obtained via Twitter scraping. Each JSONL file includes URLs and metadata collected from tweets, providing a diverse set of news articles shared on the Twitter platform.
+Similarly, the Twitter directory holds JSONL files with news article URLs obtained via scraping Twitter. Each JSONL file includes URLs and metadata collected from tweets, providing a diverse set of news articles shared on Twitter.
 
 For Twitter and Google directories, there are three main directories for each news media type. Inside each media type folder, the following main directories are included:
 
@@ -215,4 +214,4 @@ To extract news articles filtered using the specified approach outlined above, y
 - Exploring the Nationalization of Local News
 - Media Bias Analysis
 - Studying US Local News Deserts
-- Community Understanding, Trend Analysis and Prediction
+- Community Understanding, Trend Analysis, and Prediction
