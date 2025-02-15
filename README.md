@@ -137,61 +137,61 @@ We enhanced the usefulness of the news article URLs in 3DLNews by adding attribu
   
   ```
   ├── Google
-  │ ├── 1-Newspapers
-  │ │ ├── state
-  │ │ │ ├── AK
-  │ |   │ |   ├── google_newspaper_AK_2006.jsonl.gz
-  │ |   │ |   ├── google_newspaper_AK_2007.jsonl.gz
-  │ |   │ |   ├── -------------------------------
-  │ │ │ ├── --
-  │ │ │ └── WY
-  │ |   │     ├── google_newspaper_AK_2006.jsonl.gz
-  │ |   │     ├── google_newspaper_AK_2007.jsonl.gz
-  │ |   │     ├── -------------------------------
-  │ │ ├── preprocessed_state
-  │ │ │ ├── AK
-  │ |   │ |   ├── preprocessed_google_newspaper_AK_2006.jsonl.gz
-  │ |   │ |   ├── preprocessed_google_newspaper_AK_2007.jsonl.gz
-  │ |   │ |   ├── -------------------------------
-  │ │ │ ├── --
-  │ │ │ └── WY
-  │ |   │     ├── preprocessed_google_newspaper_AK_2006.jsonl.gz
-  │ |   │     ├── preprocessed_google_newspaper_AK_2007.jsonl.gz
-  │ |   │     ├── ------------------------------- 
-  │ ├── 2-Radio
-  │ ├── 3-TV
-  │ └── 4-Broadcast
+  │   ├── 1-Newspapers
+  │   │   ├── state
+  │   │   │   ├── AK
+  │   |   │   |   ├── google_newspaper_AK_2006.jsonl.gz
+  │   |   │   |   ├── google_newspaper_AK_2007.jsonl.gz
+  │   |   │   |   ├── -------------------------------
+  │   │   │   ├── --
+  │   │   │   └── WY
+  │   |   │       ├── google_newspaper_AK_2006.jsonl.gz
+  │   |   │       ├── google_newspaper_AK_2007.jsonl.gz
+  │   |   │       ├── -------------------------------
+  │   │   ├── preprocessed_state
+  │   │   │   ├── AK
+  │   |   │   |   ├── preprocessed_google_newspaper_AK_2006.jsonl.gz
+  │   |   │   |   ├── preprocessed_google_newspaper_AK_2007.jsonl.gz
+  │   |   │   |   ├── -------------------------------
+  │   │   │   ├── --
+  │   │   │   └── WY
+  │   |   │       ├── preprocessed_google_newspaper_AK_2006.jsonl.gz
+  │   |   │       ├── preprocessed_google_newspaper_AK_2007.jsonl.gz
+  │   |   │       ├── ------------------------------- 
+  │   ├── 2-Radio
+  │   ├── 3-TV
+  │   └── 4-Broadcast
   └── Twitter
-    ├── 1-Newspapers
-    ├── 2-Radio
-     ├── 3-TV
-    └── 4-Broadcast
+      ├── 1-Newspapers
+      ├── 2-Radio
+      ├── 3-TV
+      └── 4-Broadcast
   ```
 
   - [3DLNews2-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F)
 
   ```
   ├── Google
-  │ ├── 1-Newspapers
-  │ │ ├── HTML
-  │ │ │ ├── AK
-  │ │ │ │ ├── 1996
-  │ │ │ │ │ ├── 0106eb41fcb93351d3bba81a67ecf487.html.gz
-  │ │ │ │ │ ├── 024b602f2a0c7edf53ee2a1b0228bfc5.html.gz
-  │ │ │ │ │ ├── -------------------------------------  
-  │ │ │ │ ├── ----
-  │ │ │ │ └──2024
-  │ │ │ │   ├── 0106eb41fcb93351d3bba81a67ecf487.html.gz
-  │ │ │ │   ├── 024b602f2a0c7edf53ee2a1b0228bfc5.html.gz
-  │ │ │ │   ├── -------------------------------------  
-  │ ├── 2-Radio
-  │ ├── 3-TV
-  │ └── 4-Broadcast
+  │   ├── 1-Newspapers
+  │   │   ├── HTML
+  │   │   │   ├── AK
+  │   │   │   │   ├── 1996
+  │   │   │   │   │   ├── 0106eb41fcb93351d3bba81a67ecf487.html.gz
+  │   │   │   │   │   ├── 024b602f2a0c7edf53ee2a1b0228bfc5.html.gz
+  │   │   │   │   │   ├── -------------------------------------  
+  │   │   │   │   ├── ----
+  │   │   │   │   └──2024
+  │   │   │   │       ├── 0106eb41fcb93351d3bba81a67ecf487.html.gz
+  │   │   │   │       ├── 024b602f2a0c7edf53ee2a1b0228bfc5.html.gz
+  │   │   │   │       ├── -------------------------------------  
+  │   ├── 2-Radio
+  │   ├── 3-TV
+  │   └── 4-Broadcast
   └── Twitter
-    ├── 1-Newspapers
-    ├── 2-Radio
-     ├── 3-TV
-    └── 4-Broadcast
+      ├── 1-Newspapers
+      ├── 2-Radio
+      ├── 3-TV
+      └── 4-Broadcast
   ```
     
 The Google directory contains JSONL files with news article URLs extracted through scraping Google. Each JSONL file represents a collection of URLs and their associated metadata gathered from automated searches on Google.
