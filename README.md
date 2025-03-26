@@ -31,7 +31,7 @@ Fig 1. Article Distribution Across US Counties in 3DLNews version 1 (left) vs. 2
 
 ### 2. Accessing the Dataset
 
-The dataset is publicly available for download via the following links. Please note that a Globus account is required to access the dataset. A Globus account can be easily created your Google or ORCID iD accounts.
+The dataset is publicly available for download via the following links. Please note that a Globus account is required to access the dataset. A Globus account can be easily created with your Google or ORCID iD accounts.
 - [3DLNews2](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F): Contains the dataset **excluding** the HTML files of articles. The paths to the HTML files are included in the preprocessed article data objects, which is detailed in the "[Data Enrichment](#33-data-enrichment)" section.
 - [3DLNews2-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F): Includes the HTML files of the articles.
 
