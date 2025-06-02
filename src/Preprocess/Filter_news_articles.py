@@ -38,7 +38,6 @@ def process_preprocessed_file(input_file_path):
     print(f"Finished filtering: {input_file_path} \n ")
 
 def process_all_preprocessed_files():
-    """Iterate through all preprocessed files and update 'publication_date'."""
     print(f"Collecting filtered data in {preprocessed_dir}")
     
     # Process each state directory inside the preprocessed directory
