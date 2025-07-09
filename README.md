@@ -36,7 +36,7 @@ The dataset is publicly available for download via the following links. Please n
 - [3DLNews2-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F): Includes the HTML files of the articles.
 
 #### !!! Important Note
-- The [3DLNews2](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F) dataset (without HTML) is approximately 2.8 GB.
+- The [3DLNews2](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F) dataset (without HTML) is approximately 7 GB.
 - The [3DLNews2-HTML](https://app.globus.org/file-manager?origin_id=cbc9ee21-d7d3-4da6-ab27-d3f2360bdd79&origin_path=%2F) (Only HTML files) dataset is approximately 247 GB.
   
 Ensure that you have sufficient storage and bandwidth before downloading.
@@ -62,37 +62,7 @@ We issued Google and Twitter search queries to their respective search engines a
 
 ### 3.2 Data Filtering
 
-The collected URLs from Google and Twitter scraping could include both news and non-news article links. Below, we outline our filtering process for removing non-news article URLs from 3DLNews. Since there is no universal standard URL format for news articles, we have also provided access to the raw data, allowing researchers to implement their own filtering methods. Our process was informed by an experiment in which we developed a gold-standard dataset of news article URLs to understand two key properties: **path depth** and **word-boundary**.
-
-- **Path Depth**: The path depth of a URL refers to the number of hierarchies in its path property. For example:
-  - `https://example.com/` has a path depth of 0.
-  - `https://example.com/foo` has a path depth of 1.
-  - `https://example.com/foo/bar` has a path depth of 2.
-  
-- **Word-Boundary**: A word-boundary is a symbol that separates words in a URL. For example:
-  - In the URL `https://example.com/this-is-a-page`, the word-boundary is `-`.
-
-### Filtering Process
-
-The filtering process consisted of the following steps:
-
-1. **Dereferencing URLs**: 
-   - All URLs were dereferenced to resolve redirects and retrieve their final representations.
-
-2. **Domain Matching**:
-   - Links with domains not present in our local news media dataset were discarded.
-
-3. **Normalization**:
-   - URLs were converted to lowercase, trailing slashes were removed, and duplicates were eliminated.
-
-4. **Path Depth Filtering**:
-   - URLs with a path depth of 0 (typically homepages) were removed.
-   - All URLs with a path depth of 3 or greater were retained.
-
-5. **Word-Boundary Filtering**:
-   - URLs with a path depth of less than 3 were retained if they contained popular word-boundary separators such as `-`, `_`, or `.`.
-   - For example: `http://kwgs.org/post/funeral-set-ou-quarterback-killed-crash`.
-
+The collected URLs from Google and Twitter scraping could include both news and non-news article links. We used [storysniffer](https://palewi.re/docs/storysniffer/index.html) for removing non-news article URLs from 3DLNews. Since there is no universal standard URL format for news articles, we have also provided access to the raw data, allowing researchers to implement their own filtering methods. 
 
 Table 2 presents the number of links collected from Google and Twitter scrapping for all four media types and number of news articles after filtering.
 
@@ -100,11 +70,11 @@ Table 2 presents the number of links collected from Google and Twitter scrapping
 
 | **Media Type**    | **Google Collected** | **Google Filtered** | **Twitter Collected** | **Twitter Filtered** | **Total Collected** | **Total Filtered** |
 |--------------------|-----------------------|-----------------------|------------------------|-----------------------|---------------------|--------------------|
-| Newspapers         | 4,992,262            | 2,367,322            | 625,166               | 179,152              | 5,617,428          | 2,509,857         |
-| Radio              | 1,069,333            | 202,668              | 119,202               | 8,986                | 1,188,535          | 211,654           |
-| TV                 | 888,243              | 523,613              | 63,656                | 13,981               | 951,899            | 537,594           |
-| Broadcast          | 837,599              | 470,223              | 74,350                | 16,525               | 911,949            | 486,748           |
-| **Total**          | **7,787,437**        | **3,563,826**        | **882,374**           | **218,644**          | **8,669,811**      | **3,782,470**     |
+| Newspapers         | 4,992,262            | 1,903,074            | 625,166               | 153,336               | 5,617,428          | 2,056,410         |
+| Radio              | 1,069,333            | 183,735              | 119,202               | 7,534                | 1,188,535          | 191,269           |
+| TV                 | 888,243              | 473,977              | 63,656                | 12,670               | 951,899            | 486,647           |
+| Broadcast          | 837,599              | 420,664              | 74,350                | 15,256               | 911,949            | 435,920           |
+| **Total**          | **7,787,437**        | **2,981,450**        | **882,374**           | **188,796**          | **8,669,811**      | **3,170,246**     |
 
 
 ### 3.3 Data Enrichment 
@@ -115,11 +85,13 @@ We enhanced the usefulness of the news article URLs in 3DLNews by adding attribu
 
 | Property          | Description | Example   |
 |-------------------|------------------------|-------------------------|
+| id              | A unique identifier for each URL | `cd9c1ca20a` |
 | link              | The URL of the local news article.| `https://www.adn.com/alaska-news/article/womans-death-montana-has-eerie-echoes-yakutat-killing/2009/01/23/`                  |
-| is_news_article      |  Indicates whether the link is filtered as a news article based on our filtering process.                                                                                                                | true        |
-| html_filename     | Filename with HTML content of the article.    | `HTML/AK/2009/3e21b4e350560f922993604b9a037793.html.gz`                                     |
-| publication_date  | Article publication date.   | `01/23/2009`                                          |
+| is_news_article      | Indicates whether the URL was classified as a news article using [StorySniffer](https://palewi.re/docs/storysniffer/index.html).                                                                                                                | true        |
+| publication_date  | The publication date of the article. This was extracted using [html_date](https://htmldate.readthedocs.io/en/latest/) Note: While the year may appear in the URL path, this value reflects the actual publication date extracted from the article content.   | `2009-11-18`                                          |
 | title             | Title of the article. | `Woman's death in Montana has eerie echoes of Yakutat killing - Anchorage Daily News`  |
+| content             | The full textual content of the article. | <details><summary>content</summary><pre>To this day some guests refuse to sleep in Room 10 at the Glacier Bear Lodge in Yakutat. Sandra Perry, a vacationing mother of three from Washington, was shot to death there in the summer of 1996. She was 38. Her boyfriend, Robert Kowalski, said he grabbed a gun to shoot a bear outside their window but it accidentally went off, hitting her in the face. There were no witnesses. Troopers investigated and in the end they called it an accident. But around town people still talk about it, said Sharesse Edwards, one of the lodge owners. Some say Perry's spirit stayed in the room, unable to rest until the world knew the truth. And now, 12 years after her death, Alaska prosecutors are looking into the case again. That's because Kowalski has been charged with murder in Montana, and the circumstances are strikingly similar. MONTANA KILLING It was March of 2008 when Kowalski and his girlfriend, Lorraine Kay Morin, got into an argument after both had been drinking in the Northwest Montana town of Columbia Falls, according to accounts in the local paper, the Daily Inter Lake. Morin tried to throw Kowalski out and their fight escalated. A small-caliber handgun changed hands several times. Kowalski got hold of it and shot Morin in the face from a distance of about 12 inches, the Daily Inter Lake reported.</pre></details> |
+| html_filename     | Filename with HTML content of the article.    | `HTML/AK/2009/3e21b4e350560f922993604b9a037793.html.gz`|
 | media_name        | Name of local media organization.    | `Alaska Dispatch News`                                       |
 | media_type        | Type of media source (*Newspaper* or *TV* or *Radio station* or *Broadcast*). "Broadcast" refers to either TV or radio stations.                           | `newspaper`                                           |
 | location          | Location of the media organization. This includes: US state, city, & latitude/longitude.  | <details><summary>location</summary><pre>{"state": "Alaska", "city": "Anchorage", "longitude": -149.87828, "latitude": 61.216799}</pre></details>  |
@@ -204,12 +176,74 @@ For Twitter and Google directories, there are three main directories for each ne
 - **preprocessed_data:** Contains directories for each state. Within each state directory, there are jsonl.gz files for each year, which include data objects for each URL with metadata.
 - **HTML:** Contains the HTML content for each article for each state for each year, named with the hash value of each article URL.
 
-### 4. Filter News Articles
+### 4. News Data Extraction
    
-To extract news articles filtered using the specified approach outlined above, you can use the following provided script. 
+The news_extractor.py script can be used to extract filtered news article data from .jsonl.gz files (Google/Twitter) and saves them into a single CSV file per platform/media combination. It supports filtering by platform, media type, publication year, and selected metadata fields.
 
-- [Filter_news_articles.py](src/Preprocess/Filter_news_articles.py)
+#### 4.1 Command-Line Arguments
+
+| Argument         | Description                                                                                      | Default                                | Example                                                           |
+|------------------|--------------------------------------------------------------------------------------------------|----------------------------------------|-------------------------------------------------------------------|
+| `--base-dir`     | Root directory containing the `Google` and/or `Twitter` folders.                                |                | `--base_dir /path/to/data/3DLNews2`                              |
+| `--platforms`    | List of platforms to include.                                                                   | `Google Twitter`                       | `--platforms Google Twitter`                                     |
+| `--media-types`  | Media types to process. Valid values: `newspaper`, `radio`, `tv`, `broadcast`.                  | All media types                        | `--media_types newspaper radio tv broadcast`                     |
+| `--years`        | Filter files by year (must be part of the filename).                                            | All years                              | `--years 2020 2021 2024`                                         |
+| `--metadata`       | Metadata fields to extract from each article. `id` and `file_path` are always included.         | id and file_path | `--metadata title content publication_date link`     |
+
+#### 4.2 Steps to Use
+
+**Step 1: Download the Dataset**
+  Download and extract the [3DLNews2](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F) dataset to your local system.
+
+**Step 2: Get the script**
+
+Clone this repository or directly download the [extract_data.py](https://github.com/wm-newslab/3DLNews2/blob/main/src/extract_data/extract_data.py) script to your local setup.
+
+**Step 3: Run the Script**
+
+Run one of the following commands to extract news articles from the 3DLNews2 dataset, depending on your needs:
+
+  - Option 1: Minimal Command 
+    ```
+    python extract_news_to_csv.py \
+    --base_dir /path/to/data/3DLNews2 \
+    --metadata link title content publication_date
+    ```
+  - Option 2: Full Command (with explicit filters)
+    ```
+    python extract_news_to_csv.py \
+    --base-dir /path/to/data/3DLNews2 \
+    --platforms Google Twitter \
+    --media-types newspaper radio tv broadcast \
+    --years 2020 2021 2024 \
+    --metadata title content publication_date link
+    ```
+
+#### 4.3 Output Structure
+
+  When the script runs successfully, it generates output in the `results/` directory as follows:
   
+  ```
+     results/
+      ├── 1-Google/
+      │   └── 1-Newspaper.csv
+      │   └── 2-Radio.csv
+      │   └── 3-TV.csv
+      │   └── 4-Broadcast.csv    
+      ├── 2-Twitter/
+      │   └── 1-Newspaper.csv
+      │   └── 2-Radio.csv
+      │   └── 3-TV.csv
+      │   └── 4-Broadcast.csv    
+  ```
+
+#### 4.5 Notes
+  - Fields `id` and `file_path` are **always included** in the CSV output.
+  - You can mix and match filters (--years, --media_types, etc.) depending on your use case.
+  - If no filters are provided, all available articles will be processed.
+  - This script expects the directory structure and filenames to follow the 3DLNews2 dataset format.
+  - **This is just a sample utility to help you extract data. Feel free to customize or extend the code based on your specific research or project needs.**
+
 ### 5. Potential Applications of 3DLNews Dataset
 - Exploring the Nationalization of Local News
 - Media Bias Analysis
