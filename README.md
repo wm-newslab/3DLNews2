@@ -192,26 +192,29 @@ The news_extractor.py script can be used to extract filtered news article data f
 
 #### 4.2 Steps to Use
 
-**Step 1: Download the Dataset**
-  Download and extract the [3DLNews2](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F) dataset to your local system.
-
-**Step 2: Get the script**
-
-Clone this repository or directly download the [extract_data.py](https://github.com/wm-newslab/3DLNews2/blob/main/src/extract_data/extract_data.py) script to your local setup.
-
-**Step 3: Run the Script**
-
-Run one of the following commands to extract news articles from the 3DLNews2 dataset, depending on your needs:
-
-  - Option 1: Minimal Command 
+  **Step 1: Download the Dataset**
+    Download and extract the [3DLNews2](https://app.globus.org/file-manager?origin_id=e524969c-7dff-474c-899c-efddf8d15b83&origin_path=%2F) dataset to your local system.
+  
+  **Step 2: Get the script**
+  
+  Clone this repository or directly download the [extract_data.py](https://github.com/wm-newslab/3DLNews2/blob/main/src/extract_data/extract_data.py) script to your local setup.
+  
+  **Step 3: Run the Script**
+  
+  Run one of the following commands to extract news articles from the 3DLNews2 dataset, depending on your needs:
+  
+  - Option 1: Minimal Command
+    
     ```
-    python extract_news_to_csv.py \
+    python extract_data.py \
     --base_dir /path/to/data/3DLNews2 \
     --metadata link title content publication_date
     ```
+    
   - Option 2: Full Command (with explicit filters)
+    
     ```
-    python extract_news_to_csv.py \
+    python extract_data.py \
     --base-dir /path/to/data/3DLNews2 \
     --platforms Google Twitter \
     --media-types newspaper radio tv broadcast \
