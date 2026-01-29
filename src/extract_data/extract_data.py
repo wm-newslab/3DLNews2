@@ -22,7 +22,7 @@ fields_to_extract = ['id', 'file_path'] + (args.metadata if args.metadata else d
 def extract_jsonl_gz_to_csv(full_media_path, platform, media_type):
     print(f"\n[INFO] Starting extraction for: {full_media_path}")
 
-    input_dir = os.path.join(full_media_path, 'v5_preprocessed_state')
+    input_dir = os.path.join(full_media_path, 'preprocessed_state')
 
     if not os.path.exists(input_dir):
         print(f"[WARN] Skipping {platform} - directory not found: {input_dir}")
